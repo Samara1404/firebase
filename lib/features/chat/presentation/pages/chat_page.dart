@@ -4,16 +4,15 @@ class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
   @override
-  _ChatPageState createState() => _ChatPageState();
+  ChatPageState createState() => ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("data")),
-      body: Column(
-        children: [
+      body: Column(children: [
          
         ],
       ),
