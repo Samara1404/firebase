@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lost_and_found/features/chat/presentation/pages/chat_page.dart';
+import 'package:tap_kg/features/home/presentation/pages/home_page.dart';
+import 'package:tap_kg/features/map/presentation/pages/map_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const ChatPage(),
+      home: const HomePage(),
     );
   }
 }
