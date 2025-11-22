@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:tap_kg/core/theme/app_colors.dart';
 
 class MapPage extends StatefulWidget {
@@ -39,26 +40,34 @@ class MapPageState extends State<MapPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                width: 335,
+              SizedBox(
                 height: 350,
-                decoration: BoxDecoration(color: Colors.grey),
+                child: FlutterMap(
+                  options: MapOptions(
+                    initialCenter: LatLng(
+                      41.2044,
+                      74.7661,
+                    ), // Кыргызстан координаты
+                    initialZoom: 6.5, // Масштаб карты Кыргызстана
+                  ),
+                  children: [
+                    TileLayer(
+                      urlTemplate:
+                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      userAgentPackageName: 'com.example.app',
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 75),
+              SizedBox(height: 50),
               Container(
-                width: 335,
-                height: 200,
+                width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(width: 2, color: Color(0x33B4BDC4)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 12,
-                    top: 14,
-                    bottom: 21,
-                    right: 22,
-                  ),
+                  padding: const EdgeInsets.all(12),
                   child: Column(
                     children: [
                       TextField(
@@ -84,7 +93,8 @@ class MapPageState extends State<MapPage> {
                         ),
                       ),
                       SizedBox(height: 10),
-                      Expanded(
+                      SizedBox(
+                        height: 120,
                         child: ListView.separated(
                           scrollDirection: Axis.vertical,
                           separatorBuilder: (_, __) => SizedBox(height: 10),
