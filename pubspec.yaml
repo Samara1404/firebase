@@ -38,6 +38,7 @@ dependencies:
   flutter_map: ^6.0.0
   latlong2: ^0.9.0
   location: ^8.0.1
+  flutter_bloc: ^9.1.1
 
   
   
