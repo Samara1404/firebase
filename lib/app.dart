@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tap_kg/features/home/presentation/pages/home_page.dart';
 import 'package:tap_kg/features/map/presentation/pages/map_page.dart';
 
 class MyApp extends StatelessWidget {
