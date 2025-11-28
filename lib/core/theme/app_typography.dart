@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:tap_kg/core/theme/app_colors.dart';
 
 class AppTypography {
   static const TextStyle headline1 = TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle headline0 = TextStyle(
+    fontSize: 64,
+    fontWeight: FontWeight.bold, color: AppColors.blue
+  );
 
   static const TextStyle headline2 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
+  );
+  static const TextStyle headline3 = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.bold, color: AppColors.white
   );
 
   static const TextStyle title1 = TextStyle(
