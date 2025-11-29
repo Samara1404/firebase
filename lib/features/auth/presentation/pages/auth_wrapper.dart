@@ -14,12 +14,12 @@ class AuthWrapper extends StatelessWidget {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
 
-        if (state is AuthInitial || state is AuthLoading) {
+        if (state is AuthLoading || state is AuthInitial) {
           return const SplashScreen();
         }
 
         if (state is Authenticated) {
-          return const HomePage();
+          return  HomePage();
         }
 
         if (state is Unauthenticated) {
@@ -31,3 +31,5 @@ class AuthWrapper extends StatelessWidget {
     );
   }
 }
+
+ 

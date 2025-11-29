@@ -1,17 +1,35 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tap_kg/core/theme/app_colors.dart';
 import 'package:tap_kg/core/theme/app_typography.dart';
+import 'package:tap_kg/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:tap_kg/features/auth/presentation/bloc/auth_event.dart';
 import 'package:tap_kg/features/auth/presentation/widgets/custom_container.dart';
 
 class HomePage extends StatelessWidget {
-  
-  const HomePage({super.key});
+  final user = FirebaseAuth.instance.currentUser;
+
+
+   HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
+      appBar: AppBar(
+        title: Text("Башкы бет"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthBloc>().add(SignOutRequested());
+            },
+          ),
+        ],
+      ),
+
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

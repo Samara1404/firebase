@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tap_kg/core/router/app_router.dart';
 import 'package:tap_kg/features/auth/presentation/bloc/auth_event.dart';
 import 'package:tap_kg/features/auth/presentation/pages/auth_wrapper.dart';
 import 'package:tap_kg/features/auth/presentation/pages/home_page.dart';
@@ -17,9 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => AuthBloc(AuthRepositoryImpl())..add(AuthCheckRequested()),
-      child:  MaterialApp(
+      child:  MaterialApp.router(
+        routerConfig: appRouter,
         debugShowCheckedModeBanner: false,
-        home: AuthWrapper(), 
+       
       ),
     );
   }

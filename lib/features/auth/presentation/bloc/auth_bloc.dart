@@ -10,20 +10,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc(this.authRepository) : super(AuthInitial()) {
 
-
+   
     on<AuthCheckRequested>((event, emit) async {
       emit(AuthLoading());
-
-     
       await _authSubscription?.cancel();
 
-      
       _authSubscription = authRepository.authStateChanges().listen((isLoggedIn) {
-        if (isLoggedIn) {
-          add(_AuthStatusChanged(true));
-        } else {
-          add(_AuthStatusChanged(false));
-        }
+        add(_AuthStatusChanged(isLoggedIn));
       });
     });
 
@@ -41,6 +34,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthLoading());
       try {
         await authRepository.signIn(event.email, event.password);
+      } catch (e) {
+        emit(AuthError(e.toString()));
+      }
+    });
+
+    
+    on<SignUpRequested>((event, emit) async {
+      emit(AuthLoading());
+      try {
+        await authRepository.signUp(event.email, event.password);
+        emit(Authenticated());
       } catch (e) {
         emit(AuthError(e.toString()));
       }

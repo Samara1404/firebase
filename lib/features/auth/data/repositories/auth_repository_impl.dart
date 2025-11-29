@@ -21,4 +21,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Stream<bool> authStateChanges() {
     return _firebaseAuth.authStateChanges().map((user) => user != null);
   }
+  
+ @override
+Future<void> signUp(String email, String password) async {
+  await _firebaseAuth.createUserWithEmailAndPassword(
+    email: email,
+    password: password,
+  );
+}
+
 }
